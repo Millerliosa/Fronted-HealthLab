@@ -1,0 +1,78 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <div class="header">
+        <span>{{ patientName }}</span>
+        <button mat-raised-button color="primary" (click)="closeSession()">Cerrar sesión</button>
+      </div>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <h2>Ordenes de laboratorio</h2>
+    
+    <form>
+      <mat-form-field appearance="outline">
+        <mat-label>Número de orden</mat-label>
+        <input matInput placeholder="Número de orden">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Rango de fecha</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Fecha inicial">
+          <input matEndDate placeholder="Fecha final">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    </form>
+
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox></mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-checkbox></mat-checkbox>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fecha">
+        <th mat-header-cell *matHeaderCellDef> Fecha de la orden </th>
+        <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="documento">
+        <th mat-header-cell *matHeaderCellDef> Documento de la orden </th>
+        <td mat-cell *matCellDef="let element"> {{element.documento}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="numero">
+        <th mat-header-cell *matHeaderCellDef> Número de la orden </th>
+        <td mat-cell *matCellDef="let element"> {{element.numero}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Ver</button>
+            <button mat-menu-item>Editar</button>
+            <button mat-menu-item>Eliminar</button>
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="onPageChange($event)">
+    </mat-paginator>
+  </mat-card-content>
+</mat-card>

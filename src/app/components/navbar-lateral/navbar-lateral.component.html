@@ -1,0 +1,32 @@
+<mat-sidenav-container class="example-container" autosize>
+  <!-- Sidenav para pantallas pequeñas, abierto desde la izquierda -->
+  <mat-sidenav #sidenav mode="over" class="mobile-sidenav" position="start">
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="'/home'" (click)="sidenav.close()">Home</a>
+      <a mat-list-item [routerLink]="'/perfil'" (click)="sidenav.close()">Perfil usuario</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Contenido principal -->
+  <mat-sidenav-content>
+    <mat-toolbar class="fondo">
+      <span>HealthLab</span>
+      
+      <span class="example-spacer"></span>
+
+      <!-- Botón de menú para pantallas pequeñas -->
+      <button mat-icon-button (click)="sidenav.toggle()" class="mobile-menu-button">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <!-- Botones visibles en pantallas grandes -->
+      <div class="desktop-menu">
+        <a mat-list-item [routerLink]="'/home'" (click)="sidenav.close()">Home</a>
+        <a mat-list-item [routerLink]="'/perfil'" (click)="sidenav.close()">Perfil</a>
+      </div>
+    </mat-toolbar>
+
+    <!-- Aquí iría el contenido del componente que estás mostrando -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

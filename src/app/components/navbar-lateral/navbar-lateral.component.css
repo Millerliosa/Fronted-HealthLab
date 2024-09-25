@@ -1,0 +1,34 @@
+
+.example-spacer {
+  flex: 1 1 auto;
+}  
+
+.fondo {
+background-color: rgb(196, 196, 196);
+color: rgb(0, 0, 0);
+}
+
+
+.desktop-menu {
+display: flex;
+
+}
+
+.mobile-menu-button {
+display: none;
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 1000px) {
+.desktop-menu {
+  display: none;
+}
+
+.mobile-menu-button {
+  display: block;
+}
+}
+
+.example-container {
+height: 100%;
+}

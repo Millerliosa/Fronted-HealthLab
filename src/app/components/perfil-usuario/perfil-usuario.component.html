@@ -1,0 +1,27 @@
+<div class="dashboard-container">
+    <mat-card class="dashboard-card">
+      <div class="welcome-content">
+        <div class="patient-image-container">
+          <img [src]="patientImageUrl" alt="Foto del paciente" class="patient-image">
+        </div>
+        <mat-card-header>
+          <mat-card-title>Bienvenido(a) a tu perfil de usuario.</mat-card-title>
+          <mat-card-subtitle class="subtitle">Aquí podrás ver y gestionar tu información personal y médica de manera segura y confidencial. Recuerda que es importante mantener tus datos actualizados para brindarte la mejor atención posible. Si encuentras algún error o necesitas actualizar algún dato, no dudes en contactarnos. ¡Gracias por confiar en nosotros!</mat-card-subtitle>
+        </mat-card-header>
+      </div>
+    </mat-card>
+  
+    <div class="info-grid">
+      <mat-card *ngFor="let info of patientInfo" class="info-card">
+        <mat-card-content>
+          <div class="info-content">
+            <mat-icon>{{info.icon}}</mat-icon>
+            <div class="info-text">
+              <p class="info-label">{{info.label}}</p>
+              <p class="info-value">{{info.value}}</p>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>

@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+mat-form-field {
+  margin-right: 12px;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-column-select {
+  width: 32px;
+  border-right: 1px solid currentColor;
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-acciones {
+  width: 32px;
+  text-align: center;
+}
